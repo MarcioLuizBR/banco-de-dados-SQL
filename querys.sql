@@ -29,11 +29,11 @@ SELECT
     p.FirstName + ' ' + p.LastName AS CustomerName,
     COUNT(soh.SalesOrderID) AS OrderCount
 FROM
-    Person.Person p
+    Person p
 JOIN
     Customer c ON p.BusinessEntityID = c.PersonID
 JOIN
-    Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID
+    SalesOrderHeader soh ON c.CustomerID = soh.CustomerID
 GROUP BY
     p.FirstName, p.LastName;
 
