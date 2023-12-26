@@ -7,20 +7,20 @@ HAVING COUNT(*) >= 3;
 
 
 --2. Escreva uma query que ligue as tabelas Sales.SalesOrderDetail, Sales.SpecialOfferProduct e Production.Product e retorne os 3 produtos (Name) mais vendidos (pela soma de OrderQty), agrupados pelo número de dias para manufatura (DaysToManufacture).
+
 SELECT
     p.Name AS ProductName,
-    p.ProductID,
     p.DaysToManufacture,
     SUM(sod.OrderQty) AS TotalOrderQty
-FROM
+FROM 
     SalesOrderDetail sod
-JOIN
+JOIN 
     SpecialOfferProduct sop ON sod.SpecialOfferID = sop.SpecialOfferID
-JOIN
+JOIN 
     Product p ON sop.ProductID = p.ProductID
-GROUP BY
+GROUP BY 
     p.ProductID, p.Name, p.DaysToManufacture
-ORDER BY
+ORDER BY 
     TotalOrderQty DESC
 LIMIT 3;
 
